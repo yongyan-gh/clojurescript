@@ -30,7 +30,7 @@ jobs:
         with:
           output-type: 'json'
           output-file: 'results.json'
-          fail-on-result: 'true'
+          fail-on-result: 'false'
           
       - name: Upload artifact
         uses: actions/upload-artifact@v2
