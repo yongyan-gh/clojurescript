@@ -28,14 +28,14 @@ jobs:
       - name: clj-holmes (Clojure)
         uses: clj-holmes/clj-holmes-action@main
         with:
-          output-type: 'json'
-          output-file: 'results.json'
+          output-type: 'sarif'
+          output-file: 'results.sarif'
           fail-on-result: 'false'
           
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: results.json
+          path: results.sarif
           
       - name: Dependency scan
         uses: clj-holmes/clj-watson-action@main
