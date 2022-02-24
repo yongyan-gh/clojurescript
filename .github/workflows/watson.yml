@@ -45,7 +45,7 @@ jobs:
           database-strategy: dependency-check
           aliases: clojure-lsp,test 
           deps-edn-path: 'deps.edn'
-          output-type: 'json'
+          output-type: 'stdout'
           suggest-fix: 'true'
           fail-on-result: 'false'
         env:
