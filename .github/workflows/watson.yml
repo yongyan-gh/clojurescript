@@ -35,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: results.sarif
+          path: holmes_results.sarif
           
       - name: Dependency scan
         uses: clj-holmes/clj-watson-action@main
