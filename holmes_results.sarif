@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Documents/CommitteeSpecifications/2.1.0/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "clj-holmes",
+          "informationUri": "https://github.com/mthbernardes/clj-holmes",
+          "version": null,
+          "rules": [
+            {
+              "id": "clojure-read-string",
+              "name": "Usage of clojure.core/read-string",
+              "properties": {
+                "precision": "medium",
+                "tags": [ "security", "vulnerability" ]
+              },
+              "fullDescription": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+              "shortDescription": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+              "help": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+              "defaultConfiguration": { "level": "error" }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/main/clojure/cljs/closure.clj" },
+                "region": {
+                  "startLine": 2252,
+                  "endLine": 2252,
+                  "startColumn": 30,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/main/clojure/cljs/repl/server.clj" },
+                "region": {
+                  "startLine": 191,
+                  "endLine": 191,
+                  "startColumn": 20,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/main/clojure/cljs/repl/browser.clj" },
+                "region": {
+                  "startLine": 294,
+                  "endLine": 294,
+                  "startColumn": 16,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/main/clojure/cljs/repl/browser.clj" },
+                "region": {
+                  "startLine": 317,
+                  "endLine": 317,
+                  "startColumn": 9,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "src/main/clojure/cljs/repl/reflect.clj" },
+                "region": {
+                  "startLine": 51,
+                  "endLine": 51,
+                  "startColumn": 22,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "ast-ref/gen-ref.clj" },
+                "region": {
+                  "startLine": 3,
+                  "endLine": 3,
+                  "startColumn": 14,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clojure-read-string",
+          "message": { "text": "Usage of vulnerable function clojure.core/read-string. Attackers can exploit vulnerable deserialization functions which could lead to a remote code execution." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": { "uri": "bin/cljsc.clj" },
+                "region": {
+                  "startLine": 16,
+                  "endLine": 16,
+                  "startColumn": 24,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
