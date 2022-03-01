@@ -31,11 +31,21 @@ jobs:
           output-type: 'sarif'
           output-file: 'results.sarif'
           fail-on-result: 'false'
-          
+
+      - name: Upload SARIF to GitHub
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: holmes_results.sarif
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: holmes_results.sarif
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: results.sarif
           
       - name: Dependency scan
         uses: clj-holmes/clj-watson-action@main
