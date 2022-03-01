@@ -7,7 +7,7 @@
         "driver": {
           "name": "clj-holmes",
           "informationUri": "https://github.com/mthbernardes/clj-holmes",
-          "version": null,
+          "version": "1.4.1",
           "rules": [
             {
               "id": "clojure-read-string",
