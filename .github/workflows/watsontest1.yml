@@ -25,11 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
           
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          path: results.sarif
-          
       - name: Dependency scan
         uses: clj-holmes/clj-watson-action@main
         with:
