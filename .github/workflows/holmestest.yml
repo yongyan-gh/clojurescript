@@ -35,28 +35,9 @@ jobs:
       - name: Upload SARIF to GitHub
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: holmes_results.sarif
+          sarif_file: results.sarif
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: holmes_results.sarif
-          
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          path: results.sarif
-          
-      - name: Dependency scan
-        uses: clj-holmes/clj-watson-action@main
-        with:
-          clj-watson-sha: "d25b1af"
-          clj-watson-tag: "v3.0.2-ALPHA"
-          database-strategy: github-advisory
-          aliases: clojure-lsp,test 
-          deps-edn-path: 'deps.edn'
-          output-type: 'stdout'
-          suggest-fix: 'true'
-          fail-on-result: 'false'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: results.sarif.sarif
