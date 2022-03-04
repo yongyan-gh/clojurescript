@@ -30,7 +30,7 @@ jobs:
         with:
           clj-watson-sha: "d25b1af"
           clj-watson-tag: "v3.0.2-ALPHA"
-          database-strategy: dependency-check
+          database-strategy: github-advisory
           aliases: clojure-lsp,test 
           deps-edn-path: 'deps.edn'
           output-type: 'stdout'
