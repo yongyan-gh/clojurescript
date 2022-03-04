@@ -40,4 +40,4 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: results.sarif.sarif
+          path: results.sarif
