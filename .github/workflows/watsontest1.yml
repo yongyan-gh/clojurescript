@@ -1,0 +1,45 @@
+name: Watson Check 1
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'deps.edn'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  security:
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+
+    runs-on: ${{ matrix.operating-system }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: results.sarif
+          
+      - name: Dependency scan
+        uses: clj-holmes/clj-watson-action@main
+        with:
+          clj-watson-sha: "d25b1af"
+          clj-watson-tag: "v3.0.2-ALPHA"
+          database-strategy: dependency-check
+          aliases: clojure-lsp,test 
+          deps-edn-path: 'deps.edn'
+          output-type: 'stdout'
+          suggest-fix: 'true'
+          fail-on-result: 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
