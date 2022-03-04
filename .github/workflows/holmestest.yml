@@ -1,4 +1,4 @@
-name: Watson check
+name: Holmes scan
 
 on:
   pull_request:
