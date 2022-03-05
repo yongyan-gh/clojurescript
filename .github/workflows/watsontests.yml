@@ -1,4 +1,4 @@
-name: wastson_security
+name: security
 
 on:
   workflow_dispatch:
@@ -29,19 +29,20 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: scan dependencies
-        run: clojure -Sdeps "{:deps {io.github.clj-holmes/clj-watson {:git/tag \"v3.0.2-ALPHA\" :git/sha \"d25b1af\"}}}" -M -m clj-watson.cli scan -p deps.edn -o sarif -s -t github-advisory > results.sarif
+        run: clojure -Sdeps "{:deps {io.github.clj-holmes/clj-watson {:git/tag \"v3.0.2-ALPHA\" :git/sha \"992d0e6\"}}}" -M -m clj-watson.cli scan -p deps.edn -o sarif -s -t github-advisory > results.sarif
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: read report sarif
-        run: cat results.sarif
+      - name: Upload sarif result
+        uses: actions/upload-artifact@v2
+        with:
+          name: watson scan results
+          path: results.sarif
         
       - uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: results.sarif
-          wait-for-processing: true
-          
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          path: results.sarif
+          category: clj-watson
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
