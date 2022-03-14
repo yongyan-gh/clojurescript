@@ -10,31 +10,36 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+permissions:
+  contents: read
 
 jobs:
-
-  security:
-
-    strategy:
-      matrix:
-        operating-system: [ubuntu-latest]
-
-    runs-on: ${{ matrix.operating-system }}
-
+  clj-holmes:
+    name: Run clj-watson scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
-          
+
       - name: Dependency scan
-        uses: clj-holmes/clj-watson-action@main
+        uses: clj-holmes/clj-watson-action@619de8e236697f885f7118749a609b942d0594fb
         with:
-          clj-watson-sha: "d25b1af"
-          clj-watson-tag: "v3.0.2-ALPHA"
+          clj-watson-sha: "7990c86"
+          clj-watson-tag: "v3.0.2"
           database-strategy: github-advisory
           aliases: clojure-lsp,test 
-          deps-edn-path: 'deps.edn'
-          output-type: 'stdout'
-          suggest-fix: 'true'
-          fail-on-result: 'false'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          deps-edn-path: deps.edn
+          suggest-fix: true
+          output-type: sarif
+          output-file: clj-watson-results.sarif
+          fail-on-result: 'true'
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: ${{github.workspace}}/clj-watson-results.sarif
+          wait-for-processing: true
